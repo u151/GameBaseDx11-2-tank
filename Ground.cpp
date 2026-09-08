@@ -28,6 +28,7 @@ void Ground::Draw()
 	//rotate_ {0,0,0}
 	//
 	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
 }
 
 void Ground::Release()

@@ -1,13 +1,12 @@
 #pragma once
 #include "Engine/GameObject.h"
-class Tank :
-    public GameObject
+class Bullet : public GameObject
 {
-public:
 	//コンストラクタ
 //引数：parent  親オブジェクト（SceneManager）
-	Tank(GameObject* parent);
-	~Tank();
+public:
+	Bullet(GameObject* parent);
+	~Bullet() {}
 
 	//初期化
 	void Initialize() override;
@@ -20,9 +19,9 @@ public:
 
 	//開放
 	void Release() override;
+	void SetMoveVector(XMFLOAT3 move) { move_ = move; }//玉の進行方向セット
 private:
 	int hModel_;//地面モデルのハンドル
-	int camType_;
-	void SetFixedCam();//固定カメラの処理
+	XMFLOAT3 move_;//玉の進行方向
 };
 
