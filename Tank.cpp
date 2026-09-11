@@ -14,7 +14,7 @@ namespace
 	enum CAM_TYPE
 	{
 		FIXED_CAM,
-		TPS_CAM,
+		TPS_CAM,//タンク
 		TPS_CAMROT,
 		FPS_CAM,
 		CAM_TYPE_MAX
