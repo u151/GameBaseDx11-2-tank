@@ -2,29 +2,41 @@
 #include "Ground.h"
 #include "Tank.h"
 #include "Enemy.h"
+#include "Engine/SceneManager.h"
+
+int PlayScene::EnemyCount = 0;
 
 PlayScene::PlayScene(GameObject* parent)
-	:GameObject(parent,"PlayScene")	
-{
-}
+	: GameObject(parent, "PlayScene")
+{}
 
 void PlayScene::Initialize()
 {
-	Instantiate<Ground>(this);//親をplaysceneにして地面を生成
+	EnemyCount = 0;
+
+	Instantiate<Ground>(this);
 	Instantiate<Tank>(this);
-	for (int i = 0; i < 10; i++) {
+
+	for (int i = 0; i < 15; i++)
+	{
 		Instantiate<Enemy>(this);
+		EnemyCount++;
 	}
 }
 
 void PlayScene::Update()
 {
+	if (EnemyCount <= 0)
+	{
+		SceneManager* pSceneManager =
+			(SceneManager*)GetParent();
+
+		pSceneManager->ChangeScene(SCENE_ID_TEST);
+	}
 }
 
 void PlayScene::Draw()
-{
-}
+{}
 
 void PlayScene::Release()
-{
-}
+{}

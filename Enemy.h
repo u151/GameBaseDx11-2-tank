@@ -21,6 +21,7 @@ public:
 	//開放
 	void Release() override;
 	void OnCollision(GameObject* pTarget);
+	
 private:
 	int hModel_;//地面モデルのハンドル
 };

@@ -97,6 +97,12 @@ void Tank::Update()
 		vPos = vPos + moveSpeed * vMove;
 		XMStoreFloat3(&transform_.position_, vPos);//ストア：書き込み（格納）
 	}
+	if (Input::IsKey(DIK_S))
+	{
+
+		vPos = vPos - moveSpeed * vMove;
+		XMStoreFloat3(&transform_.position_, vPos);//ストア：書き込み（格納）
+	}
 	//例キャストして浮いてたら地面まで落とす
 	RayCastData data;
 	data.start = transform_.position_;

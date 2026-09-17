@@ -1,27 +1,34 @@
 #include "TestScene.h"
+#include "Engine/SceneManager.h"
+#include "Engine/Input.h"
+#include "Engine/Text.h"
 
-//コンストラクタ
-TestScene::TestScene(GameObject * parent)
+TestScene::TestScene(GameObject* parent)
 	: GameObject(parent, "TestScene")
-{
-}
+{}
 
-//初期化
 void TestScene::Initialize()
 {
+	pText_ = new Text;
+	pText_->Initialize();
 }
 
-//更新
 void TestScene::Update()
 {
+	if (Input::IsKeyDown(DIK_R))
+	{
+		SceneManager* sceneManager =
+			dynamic_cast<SceneManager*>(GetParent());
+		sceneManager->ChangeScene(SCENE_ID_PLAY);
+	}
 }
 
-//描画
 void TestScene::Draw()
 {
+	std::string scrText;
+	scrText = "TestScene";
+	pText_->Draw(20, 20, scrText.c_str());
 }
 
-//開放
 void TestScene::Release()
-{
-}
+{}

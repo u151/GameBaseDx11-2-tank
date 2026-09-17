@@ -20,15 +20,23 @@ void TankHead::Update()
 	
 	if (Input::IsKey(DIK_LEFT))
 	{
-		transform_.rotate_.y -= 4.0f;
+		transform_.rotate_.y -= 2.0f;
 	}
 	if (Input::IsKey(DIK_RIGHT))
 	{
-		transform_.rotate_.y += 4.0f;
+		transform_.rotate_.y += 2.0f;
+	}
+	if (Input::IsKey(DIK_UP))
+	{
+		transform_.rotate_.x -= 2.0f;
+	}
+	if (Input::IsKey(DIK_DOWN))
+	{
+		transform_.rotate_.x += 2.0f;
 	}
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
-		const float BULLET_SPEED = 0.2f;
+		const float BULLET_SPEED = 0.3f;
 
 		XMFLOAT3 cannonTop = Model::GetBonePosition(hModel_, "Top");
 		XMFLOAT3 cannonRoot = Model::GetBonePosition(hModel_, "Root");
